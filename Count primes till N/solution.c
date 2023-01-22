@@ -8,7 +8,7 @@ int main() {
     int n, count = 0;
     double start, end;
 
-    printf("20BCE2955 Arjun Sivaraman\n");
+    printf("Count primes till N\n");
 
     printf("\nEnter N: ");
     scanf("%d", &n);

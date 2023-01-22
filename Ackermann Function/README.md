@@ -1,9 +1,52 @@
-# Set 1
+# Ackermann Function
 
-1. Develop an OpenMP program to find the occurrence of minimum and maximum element in the randomly generated list. These operations have to be performed in different sections and print the time taken by both the sections. [Solution](./1.c)
+### Question
 
-2. Develop a C program which counts the number of primes between 1 and N, use OpenMP to carry out the operations in parallel. Display the time taken for each computation of ‘N’ successfully. [Solution](./2.c)
+The Ackermann function is a classic example of a recursive function, as it grows very quickly in value, as does the size of its call tree. Develop an OpenMP program to implement the same using tasks. [Solution File](./solution.c)
 
-3. Develop an C program to perform Matrix-Matrix multiplication. Parallelize the operations using OpenMP directives. Print the time taken for the serial and parallel implementation of the same. [Solution](./3.c)
+### Solution (C)
 
-4. The Ackermann function is a classic example of a recursive function, as it grows very quickly in value, as does the size of its call tree. Develop an OpenMP program to implement the same using tasks. [Solution](./4.c)
+```C
+#include <stdio.h>
+#include <omp.h>
+
+int ackermannFunction(int, int);
+
+int main() {
+    int m, n;
+
+    printf("Ackermann Function\n");
+
+    printf("\nEnter m and n: ");
+    scanf("%d%d", &m, &n);
+
+    #pragma omp parallel
+    {
+        #pragma omp single
+        printf("A(%d, %d) = %d\n", m, n, ackermannFunction(m, n));
+    }
+
+    return 0;
+}
+
+int ackermannFunction(int m, int n) {
+    int ans;
+
+    if (m == 0) {
+        ans = n + 1;
+    } else if (m > 0 && n == 0) {
+        #pragma omp task
+        ans = ackermannFunction(m - 1, 1);
+    } else if (m > 0 && n > 0) {
+        int shared;
+        #pragma omp task shared(shared)
+        shared = ackermannFunction(m, n - 1);
+
+        #pragma omp task
+        ans = ackermannFunction(m - 1, shared);
+    }
+
+    #pragma omp taskwait
+    return ans;
+}
+```

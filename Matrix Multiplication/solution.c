@@ -8,7 +8,7 @@ int main() {
     double start, end;
     double a[N][N], b[N][N], c[N][N];
 
-    printf("20BCE2955 Arjun Sivaraman\n");
+    printf("Matrix Multiplication\n");
 
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {

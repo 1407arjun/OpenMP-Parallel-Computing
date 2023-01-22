@@ -10,7 +10,7 @@ int main() {
     double start, end; 
     srand(time(0));
 
-    printf("20BCE2955 Arjun Sivaraman\n");
+    printf("Max and Min element\n");
     
     for (int i = 0; i < N; i++) {
         arr[i] = rand() + 1;

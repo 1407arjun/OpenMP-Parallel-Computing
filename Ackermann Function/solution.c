@@ -6,7 +6,7 @@ int ackermannFunction(int, int);
 int main() {
     int m, n;
 
-    printf("20BCE2955 Arjun Sivaraman\n");
+    printf("Ackermann Function\n");
 
     printf("\nEnter m and n: ");
     scanf("%d%d", &m, &n);
