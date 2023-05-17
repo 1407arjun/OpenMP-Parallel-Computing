@@ -1,6 +1,6 @@
 # OpenMP Parallel Computing Examples
 
-Running a solution
+Compiling and running a solution
 
 ```bash
 clang -o solution -fopenmp solution.c
